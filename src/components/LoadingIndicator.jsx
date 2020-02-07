@@ -6,19 +6,27 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     backgroundColor: 'black',
+    flexDirection: 'column',
+    alignItems: 'center',
     justifyContent: 'center',
     '& > * + *': {
       marginLeft: theme.spacing(2),
     },
+    padding: '50px 0',
+    color: 'yellow',
   },
 }));
 
 export default function CircularIndeterminate() {
   const classes = useStyles();
 
+  console.log('loading updating');
+
+
   return (
     <div className={classes.root}>
-      <CircularProgress style={{color: 'yellow'}} />
+      <CircularProgress style={{color: 'yellow', marginBottom: 20}} />
+      <span>Загрузка данных для таблицы...</span>
     </div>
   );
 }

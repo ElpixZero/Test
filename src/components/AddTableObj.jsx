@@ -46,8 +46,6 @@ function FormDialog({rows, addNewObj}) {
       if (data[key] === '') pointer =  true;
     }
 
-    console.log(pointer);
-
     return pointer;
   }
 

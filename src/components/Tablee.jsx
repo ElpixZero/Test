@@ -122,12 +122,14 @@ function CreateTable({source}) {
 
   React.useEffect(() => {
     fetchData(source);
-  }, [source])
+  }, [source]);
+
+  console.log('table updating');
+
 
   return (
-    <>
-    <div style={{display: 'flex', padding: 30, margin: '0 auto'}}>
-      <TableContainer style={{maxWidth: 1024, marginRight: 50}} component={Paper}>
+    <div style={{padding: 20, maxWidth: 1440,  margin: '0 auto'}}>
+      <TableContainer style={{backgroundColor: 'black'}} component={Paper}>
         <div style={{display: 'flex', paddingBottom: 10, maxHeight: 50, alignItems: 'center', background: 'black', justifyContent: 'space-between'}}>
           <Typography variant="h5" style={{backgroundColor: 'black', color: 'yellow'}}>Таблица данных</Typography>
           <AddTableObj rows={headRows} addNewObj={addNewObj.bind(this, data)} />
@@ -135,7 +137,7 @@ function CreateTable({source}) {
         {
           isLoading ? <LoadingIndicator style={{marginTop: 100}} />
           : <>
-            <Table className={classes.table} aria-label="simple table">
+            <Table className={classes.taisRequiredble} aria-label="simple table">
               <TableHead>
                 <TableRow>
                   { headRows.map( (item, id) => <StyledTableCell onClick={setSortOptions.bind(this, {key: item, rule: getAnotherSortRule(sortOptions.rule)})} key={item}> 
@@ -175,17 +177,16 @@ function CreateTable({source}) {
               onChangePage={(e, newPage) => setPaginationPage(newPage)}
               onChangeRowsPerPage={(event) => setPaginationCount(event.target.value)}
             />
+            <SelectedPersonCard data={selectedTableObj} />
           </>
         }
       </TableContainer>
-      <SelectedPersonCard data={selectedTableObj} />
     </div>
-  </>
   );
 }
 
 CreateTable.propTypes = {
-  source: PropTypes.array.isRequired
+  source: PropTypes.string.isRequired
 }
 
 export default CreateTable;
