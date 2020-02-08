@@ -1,12 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import {Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@material-ui/core';
 
 function FormDialog({rows, addNewObj}) {
   const [open, setOpen] = React.useState(false);
@@ -16,7 +10,7 @@ function FormDialog({rows, addNewObj}) {
     lastName: '',
     email: '',
     phone: ''
-  })
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -30,6 +24,7 @@ function FormDialog({rows, addNewObj}) {
     e.preventDefault();
 
     addNewObj(formValues);
+    
     setFormValue({
       id: '',
       firstName: '',
@@ -55,18 +50,17 @@ function FormDialog({rows, addNewObj}) {
         Добавить
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Добавление пользователя</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send updates
-            occasionally.
+            Чтобы добавить пользователя, заполните все поля:
           </DialogContentText>
           <form onSubmit={onSubmit}>
             {
               rows.map( item => (
                 <TextField
                   key={item}
-                  autoFocus
+                  variant="outlined"
                   margin="dense"
                   id={item}
                   label={item}
@@ -78,7 +72,6 @@ function FormDialog({rows, addNewObj}) {
                 />
               ))
             }
-
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Отмена
