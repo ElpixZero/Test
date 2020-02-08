@@ -19,13 +19,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function CircularIndeterminate() {
   const classes = useStyles();
-
-  console.log('loading updating');
-
-
+  
   return (
     <div className={classes.root}>
-      <CircularProgress style={{color: 'yellow', marginBottom: 20}} />
+      <CircularProgress style={{color: 'yellow', marginBottom: 20}} id="standard-basic" />
       <span>Загрузка данных для таблицы...</span>
     </div>
   );
