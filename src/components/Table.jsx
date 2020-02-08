@@ -113,18 +113,20 @@ function CreateTable({source}) {
   const fetchData = async (source) => {
     try {
       setIsLoading(true);
+      const fetchResponse = await FetchWithTimeOut(source, {}, CONSTANTS.MAX_TIMEOUT_SECONDS);
 
-      const fetchResponse = await FetchWithTimeOut(source, {}, CONSTANTS.MAX_TIMEOUT_SECONDS)
-
-      if (fetchResponse.status === 200) {
-        setData(await fetchResponse.json());
-        setIsLoading(false);
+      if (fetchResponse.ok) {
+        return setData(await fetchResponse.json());
       } else {
-        setIsLoading(false);
-        setError('К сожалению, произошла ошибка при загрузке данных для таблицы. Повторите, пожалуйста, позже')
+        return setError('К сожалению, произошла ошибка при загрузке данных для таблицы. Повторите, пожалуйста, позже')
       }
     } catch(e) {
-      setError('К сожалению, время ожидания загрузки окончена. Попробуйте, пожалуйста, позже');
+      if (e.message === 'timeout') return setError('К сожалению, время ожидания загрузки окончена. Попробуйте, пожалуйста, позже');
+
+      if (e.message === 'Failed to fetch') return setError('Проверьте, пожалуйста, ваше подключение к интернету');
+
+      return setError('Произошла ошибка. Повторите, пожалуйста, позже')
+    } finally {
       setIsLoading(false);
     }
   }
