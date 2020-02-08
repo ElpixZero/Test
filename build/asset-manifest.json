@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ArchakovTest/static/css/main.8ff5a9f6.chunk.css",
+    "main.js": "/ArchakovTest/static/js/main.3bc04f26.chunk.js",
+    "main.js.map": "/ArchakovTest/static/js/main.3bc04f26.chunk.js.map",
+    "runtime-main.js": "/ArchakovTest/static/js/runtime-main.0f7c8377.js",
+    "runtime-main.js.map": "/ArchakovTest/static/js/runtime-main.0f7c8377.js.map",
+    "static/js/2.48a62985.chunk.js": "/ArchakovTest/static/js/2.48a62985.chunk.js",
+    "static/js/2.48a62985.chunk.js.map": "/ArchakovTest/static/js/2.48a62985.chunk.js.map",
+    "index.html": "/ArchakovTest/index.html",
+    "precache-manifest.88fd0a5c959971827320a2cf9ae61eac.js": "/ArchakovTest/precache-manifest.88fd0a5c959971827320a2cf9ae61eac.js",
+    "service-worker.js": "/ArchakovTest/service-worker.js",
+    "static/css/main.8ff5a9f6.chunk.css.map": "/ArchakovTest/static/css/main.8ff5a9f6.chunk.css.map",
+    "static/js/2.48a62985.chunk.js.LICENSE.txt": "/ArchakovTest/static/js/2.48a62985.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0f7c8377.js",
+    "static/js/2.48a62985.chunk.js",
+    "static/css/main.8ff5a9f6.chunk.css",
+    "static/js/main.3bc04f26.chunk.js"
+  ]
+}
