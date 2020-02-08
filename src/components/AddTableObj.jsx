@@ -10,7 +10,14 @@ function FormDialog({rows, addNewObj}) {
     firstName: '',
     lastName: '',
     email: '',
-    phone: ''
+    phone: '',
+    description: 'Вы создали нового пользователя. У него нет реального описания.',
+    address: {
+      city: 'Адрес проживания для созданного Вами пользователя',
+      state: 'Город для созданного Вами пользователя',
+      streetAddress: 'Провинция/штат для созданного Вами пользователя',
+      zip: 'Индекс для созданного Вами пользователя',
+    }
   });
 
   const handleClickOpen = () => {
