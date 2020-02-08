@@ -2,13 +2,14 @@ import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import {Card, CardContent, Typography} from '@material-ui/core';
+import CONSTANTS from '../utils/constants';
 
 const useStyles = makeStyles({
   root: {
     marginTop: 15,
-    background: 'black',
-    color: 'yellow',
-    border: '1px dashed yellow',
+    background: CONSTANTS.PRIMARY_COLOR,
+    color: CONSTANTS.SECONDARY_COLOR,
+    border: `1px dashed ${CONSTANTS.SECONDARY_COLOR}`,
   },
   bullet: {
     display: 'inline-block',
@@ -24,9 +25,9 @@ const useStyles = makeStyles({
   },
 });
 
-const StyledTypography = withStyles(theme => ({
+const StyledTypography = withStyles(() => ({
   root: {
-    color: '#f7f70269',
+    color: CONSTANTS.PLACEHOLDER_COLOR,
   },
 }))(Typography);
 
@@ -93,7 +94,7 @@ function SimpleCard({data}) {
         </div>
         </CardContent>
     </Card>
-    : <div style={{backgroundColor: 'black', color: 'yellow', marginTop: 30}}>
+    : <div style={{backgroundColor: CONSTANTS.PRIMARY_COLOR, color: CONSTANTS.SECONDARY_COLOR, marginTop: 30}}>
       * Кликните на строку таблицы, чтобы увидеть расширенную информацию о пользователе.
     </div>
   }

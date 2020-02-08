@@ -79,12 +79,12 @@ const getAnotherSortRule = (lastRule) => {
 const StyledTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
-    color: 'yellow',
+    color: CONSTANTS.SECONDARY_COLOR,
   },
   body: {
     fontSize: 14,
     backgroundColor: theme.palette.common.black,
-    color: 'yellow',
+    color: CONSTANTS.SECONDARY_COLOR,
   },
 }))(TableCell);
 
@@ -144,9 +144,9 @@ function CreateTable({source}) {
   
   return (
     <div style={{padding: 20, maxWidth: 1440,  margin: '0 auto'}}>
-      <TableContainer style={{backgroundColor: 'black'}} component={Paper}>
-        <div style={{display: 'flex', paddingBottom: 10, maxHeight: 50, alignItems: 'center', background: 'black', justifyContent: 'space-between'}}>
-          <Typography variant="h5" style={{backgroundColor: 'black', color: 'yellow'}}>Таблица данных</Typography>
+      <TableContainer style={{backgroundColor: CONSTANTS.PRIMARY_COLOR, color: CONSTANTS.SECONDARY_COLOR}} component={Paper}>
+        <div style={{display: 'flex', paddingBottom: 10, maxHeight: 50, alignItems: 'center', justifyContent: 'space-between'}}>
+          <Typography variant="h5">Таблица данных</Typography>
           <AddTableObj rows={headRows} addNewObj={addNewObj.bind(this, data)} />
         </div>
         {
@@ -198,7 +198,7 @@ function CreateTable({source}) {
                     </Table>
 
                     <TablePagination
-                      style={{color: 'yellow', backgroundColor: 'black'}}
+                      style={{color: CONSTANTS.SECONDARY_COLOR}}
                       rowsPerPageOptions={createPaginationBreakpoints(data, perPageNavigationCount)}
                       component="div"
                       count={data.length}

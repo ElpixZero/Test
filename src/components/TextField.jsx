@@ -1,39 +1,42 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import CONSTANTS from '../utils/constants';
+
 
 const CssTextField = withStyles({
   root: {
-    '& label.Mui-focused': {
-      color: 'yellow',
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'yellow',
-    },
-    '& .MuiInputLabel-root': {
-      color: '#ffff0069',
-    },
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
-        borderColor: 'yellow',
-      },
-      '&:hover fieldset': {
-        borderColor: 'yellow',
+        borderColor: CONSTANTS.SECONDARY_COLOR,
       },
       '&.Mui-focused fieldset': {
-        borderColor: 'yellow',
+        borderColor: CONSTANTS.SECONDARY_COLOR,
       },
       '& .MuiInputBase-input': {
-        color: 'yellow',
+        color: CONSTANTS.SECONDARY_COLOR,
         padding: 10,
       }
     },
   },
 })(TextField);
 
-export default function StyledTextField({value, onChange, label, fullWidth, margin }) {
-
+function StyledTextField({value, onChange, label, fullWidth, margin }) {
   return (
-    <CssTextField margin={margin ? "dense" : 'none'} placeholder={label} fullWidth={fullWidth} value={value} variant="outlined" onChange={e => onChange(e.target.value)}  />
+    <CssTextField margin={margin} placeholder={label} fullWidth={fullWidth} value={value} variant="outlined" onChange={e => onChange(e.target.value)}  />
   );
 }
+
+StyledTextField.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
+  fullWIdth: PropTypes.bool,
+}
+
+StyledTextField.defaultProps = {
+  margin: 'dense'
+};
+
+export default StyledTextField;

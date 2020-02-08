@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@material-ui/core';
+import CONSTANTS from '../utils/constants';
 
 function FormDialog({rows, addNewObj}) {
   const [open, setOpen] = React.useState(false);
@@ -46,7 +47,7 @@ function FormDialog({rows, addNewObj}) {
 
   return (
     <div>
-      <Button style={{background: 'black', color: 'yellow', borderColor: 'yellow'}} variant="outlined" onClick={handleClickOpen}>
+      <Button style={{background: CONSTANTS.PRIMARY_COLOR, color: CONSTANTS.SECONDARY_COLOR, borderColor: CONSTANTS.SECONDARY_COLOR}} variant="outlined" onClick={handleClickOpen}>
         Добавить
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">

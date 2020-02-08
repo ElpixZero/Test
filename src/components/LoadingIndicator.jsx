@@ -1,11 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import CONSTANTS from '../utils/constants'
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    backgroundColor: 'black',
+    backgroundColor: CONSTANTS.PRIMARY_COLOR,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
@@ -13,7 +14,7 @@ const useStyles = makeStyles(theme => ({
       marginLeft: theme.spacing(2),
     },
     padding: '50px 0',
-    color: 'yellow',
+    color: CONSTANTS.SECONDARY_COLOR,
   },
 }));
 
@@ -22,7 +23,7 @@ export default function CircularIndeterminate() {
   
   return (
     <div className={classes.root}>
-      <CircularProgress style={{color: 'yellow', marginBottom: 20}} id="standard-basic" />
+      <CircularProgress style={{color: CONSTANTS.SECONDARY_COLOR, marginBottom: 20}} id="standard-basic" />
       <span>Загрузка данных для таблицы...</span>
     </div>
   );
