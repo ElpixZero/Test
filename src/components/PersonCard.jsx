@@ -1,13 +1,11 @@
 import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import {Card, CardContent, Typography} from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
-    marginTop: 30,
+    marginTop: 15,
     background: 'black',
     color: 'yellow',
     border: '1px dashed yellow',
@@ -26,7 +24,6 @@ const useStyles = makeStyles({
   },
 });
 
-
 const StyledTypography = withStyles(theme => ({
   root: {
     color: '#f7f70269',
@@ -37,12 +34,10 @@ const StyledTypography = withStyles(theme => ({
 function SimpleCard({data}) {
   const classes = useStyles();
 
-  console.log(data);
-
   return (
     <>
     { data ? <Card className={classes.root}>
-      <CardContent style={{padding: 15}}>
+      <CardContent style={{padding: '10px 15px 5px 15px'}}>
         <div style={{display: 'flex'}}>
           <StyledTypography className={classes.title} color="textSecondary" gutterBottom>
             Выбран пользователь: 
@@ -99,7 +94,7 @@ function SimpleCard({data}) {
         </CardContent>
     </Card>
     : <div style={{backgroundColor: 'black', color: 'yellow', marginTop: 30}}>
-      *Кликните на строку таблицы, чтобы увидеть расширенную информацию о пользователе.
+      * Кликните на строку таблицы, чтобы увидеть расширенную информацию о пользователе.
     </div>
   }
   </>
