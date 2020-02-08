@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 import {Table, TableRow,  TableBody, TableCell, TableContainer, TableHead, Paper, TablePagination, Typography} from '@material-ui/core';
-import {ArrowDownward as ArrowDownwardIcon, Edit as EditIcon} from '@material-ui/icons';
+import {ArrowDownward as ArrowDownwardIcon, Edit as EditIcon, Close as CloseIcon} from '@material-ui/icons';
 
 import SelectedPersonCard from './PersonCard';
 import LoadingIndicator from './LoadingIndicator';
@@ -105,6 +105,11 @@ function CreateTable({source}) {
     rule: CONSTANTS.DESC
   });
 
+  const handleCloseInputFilter = () => {
+    setIsEdit('');
+    setEditData('');
+  }
+
   const fetchData = async (source) => {
     try {
       setIsLoading(true);
@@ -132,7 +137,7 @@ function CreateTable({source}) {
   }
 
   React.useEffect(() => {
-    fetchData(source)
+    fetchData(source);
   }, [source]);
   
   return (
@@ -156,9 +161,13 @@ function CreateTable({source}) {
                                   style={{ display: 'flex', alignItems: 'center', justifyContent: id === 0 ? 'flex-start' : 'flex-end'}}
                                 >
                                   {
-                                    isEdit === item ? <MyTextField value={editData} onChange={setEditData} label={item} />
+                                    isEdit === item ? <>
+                                      <MyTextField value={editData} onChange={setEditData} label={item} />
+                                      <CloseIcon onClick={handleCloseInputFilter} style={{fontSize: 16, cursor: 'pointer', marginLeft: 10}} />
+
+                                    </>
                                     : <>
-                                    <div onClick={setSortOptions.bind(this, {key: item, rule: getAnotherSortRule(sortOptions.rule)})} style={{cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginRight: 20}}>
+                                    <div onClick={setSortOptions.bind(this, {key: item, rule: getAnotherSortRule(sortOptions.rule)})} style={{cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginRight: 15}}>
                                       <ArrowDownwardIcon style={{marginRight: 5, display: item === sortOptions.key ? 'block' : 'none', transform: sortOptions.rule === CONSTANTS.DESC ? 'rotate(0deg)' : 'rotate(180deg)'}} />
                                       {item}
                                     </div>
