@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+
 import CONSTANTS from '../utils/constants'
 
 const useStyles = makeStyles(theme => ({
@@ -18,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function CircularIndeterminate() {
+export default function LoadingIndicator() {
   const classes = useStyles();
   
   return (

@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-
 import {Table, TableRow,  TableBody, TableCell, TableContainer, TableHead, Paper, TablePagination, Typography} from '@material-ui/core';
 import {ArrowDownward as ArrowDownwardIcon, Edit as EditIcon, Close as CloseIcon} from '@material-ui/icons';
 
-import SelectedPersonCard from './PersonCard';
+import SelectedUserCard from './UserCard';
 import LoadingIndicator from './LoadingIndicator';
-import AddTableObj from './AddTableObj';
+import AddUser from './AddUser';
 import MyTextField from './TextField';
 import ErrorMessage from './ErrorMessage';
 
@@ -147,7 +146,7 @@ function CreateTable({source}) {
       <TableContainer style={{backgroundColor: CONSTANTS.PRIMARY_COLOR, color: CONSTANTS.SECONDARY_COLOR}} component={Paper}>
         <div style={{display: 'flex', paddingBottom: 10, maxHeight: 50, alignItems: 'center', justifyContent: 'space-between'}}>
           <Typography variant="h5">Таблица данных</Typography>
-          <AddTableObj rows={headRows} addNewObj={addNewObj.bind(this, data)} />
+          <AddUser rows={headRows} addNewObj={addNewObj.bind(this, data)} />
         </div>
         {
           isLoading ? <LoadingIndicator style={{marginTop: 100}} />
@@ -207,7 +206,7 @@ function CreateTable({source}) {
                       onChangePage={(e, newPage) => setPaginationPage(newPage)}
                       onChangeRowsPerPage={(event) => setPaginationCount(event.target.value)}
                     />
-                    <SelectedPersonCard data={selectedTableObj} />
+                    <SelectedUserCard data={selectedTableObj} />
                   </>
               }
           </>

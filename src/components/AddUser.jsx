@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@material-ui/core';
 import CONSTANTS from '../utils/constants';
 
-function FormDialog({rows, addNewObj}) {
+function AddUser({rows, addNewObj}) {
   const [open, setOpen] = React.useState(false);
   const [formValues, setFormValue] = React.useState({
     id: '',
@@ -95,9 +95,9 @@ function FormDialog({rows, addNewObj}) {
   );
 }
 
-FormDialog.propTypes = {
+AddUser.propTypes = {
   rows: PropTypes.array.isRequired,
   addNewObj: PropTypes.func.isRequired,
 }
 
-export default FormDialog;
+export default AddUser;

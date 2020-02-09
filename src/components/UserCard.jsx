@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import {Card, CardContent, Typography} from '@material-ui/core';
+
 import CONSTANTS from '../utils/constants';
 
 const useStyles = makeStyles({
@@ -32,7 +33,7 @@ const StyledTypography = withStyles(() => ({
 }))(Typography);
 
 
-function SimpleCard({data}) {
+function UserCard({data}) {
   const classes = useStyles();
 
   return (
@@ -102,11 +103,11 @@ function SimpleCard({data}) {
   );
 }
 
-SimpleCard.propTypes = {
+UserCard.propTypes = {
   data: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.object,
   ]),
 }
 
-export default SimpleCard;
+export default UserCard;

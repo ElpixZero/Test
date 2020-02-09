@@ -4,7 +4,7 @@ import {CssBaseline, Container, Button, ButtonGroup} from '@material-ui/core';
 
 import CONSTANTS from '../utils/constants';
 
-function SimpleContainer({setSource}) {
+function InitialScreen({setSource}) {
   const ulrs = {
     small: CONSTANTS.SMALL_DATA_URL,
     big: CONSTANTS.BIG_DATA_URL,
@@ -27,8 +27,8 @@ function SimpleContainer({setSource}) {
   );
 }
 
-SimpleContainer.propTypes = {
+InitialScreen.propTypes = {
   setSource: PropTypes.func.isRequired,
 }
 
-export default SimpleContainer;
+export default InitialScreen;
