@@ -139,7 +139,7 @@ function CreateTable({source}) {
       <TableContainer style={{backgroundColor: CONSTANTS.PRIMARY_COLOR, color: CONSTANTS.SECONDARY_COLOR}} component={Paper}>
         <div style={{display: 'flex', paddingBottom: 10, maxHeight: 50, alignItems: 'center', justifyContent: 'space-between'}}>
           <Typography variant="h5">Таблица данных</Typography>
-          <AddUser rows={headRows} addNewObj={addNewObj.bind(this, data)} />
+          {data.length !== 0 && <AddUser rows={headRows} addNewObj={addNewObj.bind(this, data)} />}
         </div>
         {
           isLoading ? <LoadingIndicator style={{marginTop: 100}} />
