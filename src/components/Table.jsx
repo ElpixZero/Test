@@ -90,10 +90,8 @@ const StyledTableCell = withStyles(theme => ({
 
 function CreateTable({source}) {
   const classes = useStyles();
-
   const [error, setError] = React.useState('');
-  const [isEdit, setIsEdit] = React.useState('');
-  const [editData, setEditData] = React.useState('');
+  const [filterInputs, setFilterInputs] = React.useState({id: '', value: ''})
   const [data, setData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [selectedTableObj, setSelectedTableObj] = React.useState(false);
@@ -104,10 +102,7 @@ function CreateTable({source}) {
     rule: CONSTANTS.DESC
   });
 
-  const handleCloseInputFilter = () => {
-    setIsEdit('');
-    setEditData('');
-  }
+  console.log(filterInputs);
 
   const fetchData = async (source) => {
     try {
@@ -128,6 +123,13 @@ function CreateTable({source}) {
     } finally {
       setIsLoading(false);
     }
+  }
+
+  const editFilterInputHandle = (key) => {
+    setFilterInputs({
+      ...filterInputs,
+      id: key
+    })
   }
 
   const addNewObj = (data, newObj) => {
@@ -162,9 +164,9 @@ function CreateTable({source}) {
                                   style={{ display: 'flex', alignItems: 'center', justifyContent: id === 0 ? 'flex-start' : 'flex-end'}}
                                 >
                                   {
-                                    isEdit === item ? <>
-                                      <MyTextField value={editData} onChange={setEditData} label={item} />
-                                      <CloseIcon onClick={handleCloseInputFilter} style={{fontSize: 16, cursor: 'pointer', marginLeft: 10}} />
+                                    filterInputs.id === item ? <>
+                                      <MyTextField value={filterInputs.value} onChange={value => setFilterInputs({...filterInputs, value})} label={item} />
+                                      <CloseIcon onClick={setFilterInputs.bind(this, {id: '', value: ''})} style={{fontSize: 16, cursor: 'pointer', marginLeft: 10}} />
 
                                     </>
                                     : <>
@@ -172,7 +174,7 @@ function CreateTable({source}) {
                                       <ArrowDownwardIcon style={{marginRight: 5, display: item === sortOptions.key ? 'block' : 'none', transform: sortOptions.rule === CONSTANTS.DESC ? 'rotate(0deg)' : 'rotate(180deg)'}} />
                                       {item}
                                     </div>
-                                    <EditIcon onClick={() => setIsEdit(item)} style={{fontSize: 16, cursor: 'pointer'}} />
+                                    <EditIcon onClick={setFilterInputs.bind(this, {value: '', id: item})} style={{fontSize: 16, cursor: 'pointer'}} />
                                   </>
                                   }
                                 </div>
@@ -182,7 +184,7 @@ function CreateTable({source}) {
                         </TableRow>
                       </TableHead>
                       <TableBody>
-                      {paginateData(sortData(data, sortOptions, {key: isEdit, value: editData}), paginationCount, paginationPage).map(row => (
+                      {paginateData(sortData(data, sortOptions, {key: filterInputs.id, value: filterInputs.value}), paginationCount, paginationPage).map(row => (
                         <TableRow onClick={setSelectedTableObj.bind(this, row)} style={{cursor: 'pointer'}} key={row.id + row.email}>
                           <StyledTableCell component="th" scope="row">
                             {row.id}
