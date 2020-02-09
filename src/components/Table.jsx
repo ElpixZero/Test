@@ -125,13 +125,6 @@ function CreateTable({source}) {
     }
   }
 
-  const editFilterInputHandle = (key) => {
-    setFilterInputs({
-      ...filterInputs,
-      id: key
-    })
-  }
-
   const addNewObj = (data, newObj) => {
     let lastData = data.slice();
     lastData.unshift(newObj);
