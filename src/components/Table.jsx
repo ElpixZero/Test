@@ -115,7 +115,7 @@ function CreateTable({source}) {
     } catch(e) {
       if (e.message === 'timeout') return setError('К сожалению, время ожидания загрузки окончена. Попробуйте, пожалуйста, позже');
 
-      if (e.message === 'Failed to fetch') return setError('Проверьте, пожалуйста, ваше подключение к интернету');
+      if (e.message === 'Failed to fetch') return setError('Не удается выполнить запрос к серверу. Возможно, проблема связана с вашим подключением');
 
       return setError('Произошла ошибка. Повторите, пожалуйста, позже')
     } finally {
