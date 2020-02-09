@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import CONSTANTS from '../utils/constants';
 
-
 const CssTextField = withStyles({
   root: {
     '& .MuiOutlinedInput-root': {
