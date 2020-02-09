@@ -102,8 +102,6 @@ function CreateTable({source}) {
     rule: CONSTANTS.DESC
   });
 
-  console.log(filterInputs);
-
   const fetchData = async (source) => {
     try {
       setIsLoading(true);
@@ -112,7 +110,7 @@ function CreateTable({source}) {
       if (fetchResponse.ok) {
         return setData(await fetchResponse.json());
       } else {
-        return setError('К сожалению, произошла ошибка при загрузке данных для таблицы. Повторите, пожалуйста, позже')
+        setError('К сожалению, произошла ошибка при загрузке данных для таблицы. Повторите, пожалуйста, позже')
       }
     } catch(e) {
       if (e.message === 'timeout') return setError('К сожалению, время ожидания загрузки окончена. Попробуйте, пожалуйста, позже');
